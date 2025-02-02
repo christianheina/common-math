@@ -16,7 +16,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.christianheina.math</groupId>
+	<groupId>com.christianheina.common</groupId>
 	<artifactId>common-math</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -29,7 +29,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<testng.version>7.4.0</testng.version>
+		<commonsmath3.version>3.6.1</commonsmath3.version>
+		<jtransforms.version>3.1</jtransforms.version>
+		<testng.version>7.10.2</testng.version>
 		<formatter-maven-plugin.version>2.16.0</formatter-maven-plugin.version>
 		<maven-release-plugin.version>3.0.0-M4</maven-release-plugin.version>
 		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
@@ -42,12 +44,12 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>
-			<version>3.6.1</version>
+			<version>${commonsmath3.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.wendykierp</groupId>
 			<artifactId>JTransforms</artifactId>
-			<version>3.1</version>
+			<version>${jtransforms.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
