@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.christianheina.math;
+package com.christianheina.common.math;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,11 +24,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for {@link MathUtil}.
+ * Unit test for {@link MathAdditions}.
  * 
  * @author Christian Heina (developer@christianheina.com)
  */
-public class MathUtilTest {
+public class MathAdditionsTest {
 
     private static final List<Double> EMPTY_LIST = new ArrayList<>();
     private static final List<Double> DOUBLE_LIST_1 = Arrays.asList(new Double[] { 10.0, 15.0, 5.0 });
@@ -38,49 +38,49 @@ public class MathUtilTest {
 
     @Test
     public void pearsonCorrelationTest() {
-        double corrAB = MathUtil.pearsonCorrelation(DOUBLE_LIST_3, DOUBLE_LIST_4);
+        double corrAB = MathAdditions.pearsonCorrelation(DOUBLE_LIST_3, DOUBLE_LIST_4);
         Assert.assertEquals(0.0, corrAB, 1e-9);
 
-        double corrBA = MathUtil.pearsonCorrelation(DOUBLE_LIST_4, DOUBLE_LIST_3);
+        double corrBA = MathAdditions.pearsonCorrelation(DOUBLE_LIST_4, DOUBLE_LIST_3);
         Assert.assertEquals(0.0, corrAB, 1e-9);
 
         Assert.assertEquals(corrAB, corrBA, 1e-9);
 
-        double corrAA = MathUtil.pearsonCorrelation(DOUBLE_LIST_3, DOUBLE_LIST_3);
+        double corrAA = MathAdditions.pearsonCorrelation(DOUBLE_LIST_3, DOUBLE_LIST_3);
         Assert.assertEquals(1.0, corrAA, 1e-9);
 
-        double corrBB = MathUtil.pearsonCorrelation(DOUBLE_LIST_4, DOUBLE_LIST_4);
+        double corrBB = MathAdditions.pearsonCorrelation(DOUBLE_LIST_4, DOUBLE_LIST_4);
         Assert.assertEquals(1.0, corrBB, 1e-9);
     }
 
     @Test
     public void dotProductTest() {
-        double productAB = MathUtil.dotProduct(DOUBLE_LIST_3, DOUBLE_LIST_4);
+        double productAB = MathAdditions.dotProduct(DOUBLE_LIST_3, DOUBLE_LIST_4);
         Assert.assertEquals(0.0, productAB, 1e-9);
 
-        double productBA = MathUtil.dotProduct(DOUBLE_LIST_4, DOUBLE_LIST_3);
+        double productBA = MathAdditions.dotProduct(DOUBLE_LIST_4, DOUBLE_LIST_3);
         Assert.assertEquals(0.0, productBA, 1e-9);
 
-        double productAA = MathUtil.dotProduct(DOUBLE_LIST_3, DOUBLE_LIST_3);
+        double productAA = MathAdditions.dotProduct(DOUBLE_LIST_3, DOUBLE_LIST_3);
         Assert.assertEquals(4.0, productAA, 1e-9);
 
-        double productBB = MathUtil.dotProduct(DOUBLE_LIST_4, DOUBLE_LIST_4);
+        double productBB = MathAdditions.dotProduct(DOUBLE_LIST_4, DOUBLE_LIST_4);
         Assert.assertEquals(4.0, productBB, 1e-9);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void dotProductExceptionTest() {
-        MathUtil.dotProduct(DOUBLE_LIST_3, EMPTY_LIST);
+        MathAdditions.dotProduct(DOUBLE_LIST_3, EMPTY_LIST);
     }
 
     @Test
     public void covarianceTest() {
         // cov(A,B)
-        double covAB = MathUtil.covariance(DOUBLE_LIST_3, DOUBLE_LIST_4);
+        double covAB = MathAdditions.covariance(DOUBLE_LIST_3, DOUBLE_LIST_4);
         Assert.assertEquals(0.0, covAB, 1e-9);
 
         // cov(B,A)
-        double covBA = MathUtil.covariance(DOUBLE_LIST_4, DOUBLE_LIST_3);
+        double covBA = MathAdditions.covariance(DOUBLE_LIST_4, DOUBLE_LIST_3);
         Assert.assertEquals(0.0, covBA, 1e-9);
 
         // cov(A,B) == cov(B,A)
@@ -89,41 +89,41 @@ public class MathUtilTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void covarianceExceptionTest() {
-        MathUtil.covariance(DOUBLE_LIST_3, EMPTY_LIST);
+        MathAdditions.covariance(DOUBLE_LIST_3, EMPTY_LIST);
     }
 
     @Test
     public void varianceTest() {
-        double varA = MathUtil.variance(DOUBLE_LIST_3);
+        double varA = MathAdditions.variance(DOUBLE_LIST_3);
         Assert.assertEquals(1.3333333333333333, varA, 1e-9);
-        Assert.assertEquals(Math.pow(MathUtil.standardDeviation(DOUBLE_LIST_3), 2), varA, 1e-9);
+        Assert.assertEquals(Math.pow(MathAdditions.standardDeviation(DOUBLE_LIST_3), 2), varA, 1e-9);
 
-        double varB = MathUtil.variance(DOUBLE_LIST_4);
+        double varB = MathAdditions.variance(DOUBLE_LIST_4);
         Assert.assertEquals(1.3333333333333333, varB, 1e-9);
-        Assert.assertEquals(Math.pow(MathUtil.standardDeviation(DOUBLE_LIST_4), 2), varA, 1e-9);
+        Assert.assertEquals(Math.pow(MathAdditions.standardDeviation(DOUBLE_LIST_4), 2), varA, 1e-9);
     }
 
     @Test
     public void standardDeviationTest() {
-        double stdA = MathUtil.standardDeviation(DOUBLE_LIST_3);
+        double stdA = MathAdditions.standardDeviation(DOUBLE_LIST_3);
         Assert.assertEquals(1.1547005383792515, stdA, 1e-9);
-        Assert.assertEquals(Math.sqrt(MathUtil.variance(DOUBLE_LIST_3)), stdA, 1e-9);
+        Assert.assertEquals(Math.sqrt(MathAdditions.variance(DOUBLE_LIST_3)), stdA, 1e-9);
 
-        double stdB = MathUtil.standardDeviation(DOUBLE_LIST_4);
+        double stdB = MathAdditions.standardDeviation(DOUBLE_LIST_4);
         Assert.assertEquals(1.1547005383792515, stdB, 1e-9);
-        Assert.assertEquals(Math.sqrt(MathUtil.variance(DOUBLE_LIST_4)), stdB, 1e-9);
+        Assert.assertEquals(Math.sqrt(MathAdditions.variance(DOUBLE_LIST_4)), stdB, 1e-9);
     }
 
     @Test
     public void sumTest() {
-        Assert.assertEquals(30.0, MathUtil.sum(DOUBLE_LIST_1), 1e-9);
-        Assert.assertEquals(0.0, MathUtil.sum(DOUBLE_LIST_2), 1e-9);
+        Assert.assertEquals(30.0, MathAdditions.sum(DOUBLE_LIST_1), 1e-9);
+        Assert.assertEquals(0.0, MathAdditions.sum(DOUBLE_LIST_2), 1e-9);
     }
 
     @Test
     public void meanTest() {
-        Assert.assertEquals(10.0, MathUtil.mean(DOUBLE_LIST_1), 1e-9);
-        Assert.assertEquals(0.0, MathUtil.mean(DOUBLE_LIST_2), 1e-9);
+        Assert.assertEquals(10.0, MathAdditions.mean(DOUBLE_LIST_1), 1e-9);
+        Assert.assertEquals(0.0, MathAdditions.mean(DOUBLE_LIST_2), 1e-9);
     }
 
 }

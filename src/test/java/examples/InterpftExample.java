@@ -18,7 +18,7 @@ package examples;
 
 import java.util.List;
 
-import com.christianheina.math.interpolation.Interpolation;
+import com.christianheina.common.math.interpolation.Interpolation;
 
 /**
  * Example class using interpft interpolation

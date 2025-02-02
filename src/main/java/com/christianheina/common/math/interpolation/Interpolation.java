@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.christianheina.math.interpolation;
+
+package com.christianheina.common.math.interpolation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.stream.Stream;
 
 import org.apache.commons.math3.complex.Complex;
 
-import com.christianheina.math.ComplexMath;
+import com.christianheina.common.math.ComplexAdditions;
 
 /**
  * Provides interpolation functionality
@@ -36,7 +37,8 @@ public class Interpolation {
         /* Hidden Constructor */ }
 
     /**
-     * Interpolate using FFT method
+     * Interpolate using FFT method<br>
+     * Based on interpft function from MATLAB.
      * 
      * @param dataToInterpolate
      *            data to interpolate
@@ -53,7 +55,8 @@ public class Interpolation {
     }
 
     /**
-     * Interpolate using FFT method
+     * Interpolate using FFT method<br>
+     * Based on interpft function from MATLAB.
      * 
      * @param dataToInterpolate
      *            data to interpolate
@@ -70,7 +73,8 @@ public class Interpolation {
     }
 
     /**
-     * Interpolate using FFT method
+     * Interpolate using FFT method<br>
+     * Based on interpft function from MATLAB.
      * 
      * @param dataToInterpolate
      *            data to interpolate
@@ -85,7 +89,8 @@ public class Interpolation {
     }
 
     /**
-     * Interpolate using FFT method
+     * Interpolate using FFT method<br>
+     * Based on interpft function from MATLAB.
      * 
      * @param dataToInterpolate
      *            data to interpolate
@@ -95,7 +100,7 @@ public class Interpolation {
      * @return interpolated data
      */
     public static List<Double> interpft(double[] dataToInterpolate, int lengthOfInterpolatedDataArray) {
-        List<Complex> fftedData = ComplexMath.fft(dataToInterpolate);
+        List<Complex> fftedData = ComplexAdditions.fft(dataToInterpolate);
         List<Complex> interpolatedData = commonInterpft(fftedData, lengthOfInterpolatedDataArray);
         List<Double> realInterpolationResult = new ArrayList<>();
         double multiplier = (double) lengthOfInterpolatedDataArray / fftedData.size();
@@ -107,7 +112,8 @@ public class Interpolation {
     }
 
     /**
-     * Interpolate using FFT method
+     * Interpolate using FFT method<br>
+     * Based on interpft function from MATLAB.
      * 
      * @param dataToInterpolate
      *            data to interpolate
@@ -117,7 +123,7 @@ public class Interpolation {
      * @return interpolated data
      */
     public static List<Complex> interpft(Complex[] dataToInterpolate, int lengthOfInterpolatedDataArray) {
-        List<Complex> fftedData = ComplexMath.fft(dataToInterpolate);
+        List<Complex> fftedData = ComplexAdditions.fft(dataToInterpolate);
         List<Complex> interpolatedData = commonInterpft(fftedData, lengthOfInterpolatedDataArray);
         double multiplier = (double) lengthOfInterpolatedDataArray / fftedData.size();
         for (int i = 0; i < interpolatedData.size(); i++) {
@@ -142,7 +148,7 @@ public class Interpolation {
                     dataWithInterpolatedPoints.get(nyqst - 1));
         }
 
-        return ComplexMath.ifft(dataWithInterpolatedPoints);
+        return ComplexAdditions.ifft(dataWithInterpolatedPoints);
     }
 
 }

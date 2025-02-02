@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.christianheina.math;
+package com.christianheina.common.math;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for {@link ComplexMath}.
+ * Unit test for {@link ComplexAdditions}.
  * 
  * @author Christian Heina (developer@christianheina.com)
  */
-public class ComplexMathTest {
+public class ComplexAdditionsTest {
 
     private static final double EPS = 1e-9;
 
@@ -85,49 +85,49 @@ public class ComplexMathTest {
 
     @Test
     public void pearsonCorrelationTest() {
-        Complex corrAB = ComplexMath.pearsonCorrelation(complexList1, complexList2);
+        Complex corrAB = ComplexAdditions.pearsonCorrelation(complexList1, complexList2);
         Assert.assertTrue(Complex.equals(corrAB, new Complex(0.15789473684210528, 0.0), EPS));
 
-        Complex corrBA = ComplexMath.pearsonCorrelation(complexList2, complexList1);
+        Complex corrBA = ComplexAdditions.pearsonCorrelation(complexList2, complexList1);
         Assert.assertTrue(Complex.equals(corrBA, new Complex(0.15789473684210528, 0.0), EPS));
 
         Assert.assertEquals(corrAB, corrBA);
 
-        Complex corrAA = ComplexMath.pearsonCorrelation(complexList1, complexList1);
+        Complex corrAA = ComplexAdditions.pearsonCorrelation(complexList1, complexList1);
         Assert.assertTrue(Complex.equals(corrAA, Complex.ONE, EPS));
 
-        Complex corrBB = ComplexMath.pearsonCorrelation(complexList2, complexList2);
+        Complex corrBB = ComplexAdditions.pearsonCorrelation(complexList2, complexList2);
         Assert.assertTrue(Complex.equals(corrBB, Complex.ONE, EPS));
     }
 
     @Test
     public void dotProductTest() {
-        Complex productAB = ComplexMath.dotProduct(complexList1, complexList2);
+        Complex productAB = ComplexAdditions.dotProduct(complexList1, complexList2);
         Assert.assertTrue(Complex.equals(productAB, new Complex(-1, 2), EPS));
 
-        Complex productBA = ComplexMath.dotProduct(complexList1, complexList2);
+        Complex productBA = ComplexAdditions.dotProduct(complexList1, complexList2);
         Assert.assertTrue(Complex.equals(productBA, new Complex(-1, 2), EPS));
 
-        Complex productAA = ComplexMath.dotProduct(complexList1, complexList2);
+        Complex productAA = ComplexAdditions.dotProduct(complexList1, complexList2);
         Assert.assertTrue(Complex.equals(productAA, new Complex(-1, 2), EPS));
 
-        Complex productBB = ComplexMath.dotProduct(complexList1, complexList2);
+        Complex productBB = ComplexAdditions.dotProduct(complexList1, complexList2);
         Assert.assertTrue(Complex.equals(productBB, new Complex(-1, 2), EPS));
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void dotProductExceptionTest() {
-        ComplexMath.dotProduct(complexList1, EMPTY_LIST);
+        ComplexAdditions.dotProduct(complexList1, EMPTY_LIST);
     }
 
     @Test
     public void covarianceTest() {
         // cov(A,B)
-        Complex covAB = ComplexMath.covariance(complexList1, complexList2);
+        Complex covAB = ComplexAdditions.covariance(complexList1, complexList2);
         Assert.assertTrue(Complex.equals(covAB, new Complex(0.25, 0.0), EPS));
 
         // cov(B,A)
-        Complex covBA = ComplexMath.covariance(complexList2, complexList1);
+        Complex covBA = ComplexAdditions.covariance(complexList2, complexList1);
         Assert.assertTrue(Complex.equals(covBA, new Complex(0.25, 0.0), EPS));
 
         // cov(A,B) == cov(B,A)
@@ -136,52 +136,52 @@ public class ComplexMathTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void covarianceExceptionTest() {
-        ComplexMath.covariance(complexList1, EMPTY_LIST);
+        ComplexAdditions.covariance(complexList1, EMPTY_LIST);
     }
 
     @Test
     public void varianceTest() {
-        double varA = ComplexMath.variance(complexList1);
+        double varA = ComplexAdditions.variance(complexList1);
         Assert.assertEquals(1.5833333333333333, varA, 1e-9);
-        Assert.assertEquals(Math.pow(ComplexMath.standardDeviation(complexList1), 2), varA, EPS);
+        Assert.assertEquals(Math.pow(ComplexAdditions.standardDeviation(complexList1), 2), varA, EPS);
 
-        double varB = ComplexMath.variance(complexList2);
+        double varB = ComplexAdditions.variance(complexList2);
         Assert.assertEquals(1.5833333333333333, varB, 1e-9);
-        Assert.assertEquals(Math.pow(ComplexMath.standardDeviation(complexList2), 2), varA, EPS);
+        Assert.assertEquals(Math.pow(ComplexAdditions.standardDeviation(complexList2), 2), varA, EPS);
     }
 
     @Test
     public void standardDeviationTest() {
-        double stdA = ComplexMath.standardDeviation(complexList1);
+        double stdA = ComplexAdditions.standardDeviation(complexList1);
         Assert.assertEquals(1.2583057392117916, stdA, 1e-9);
-        Assert.assertEquals(Math.sqrt(ComplexMath.variance(complexList1)), stdA, EPS);
+        Assert.assertEquals(Math.sqrt(ComplexAdditions.variance(complexList1)), stdA, EPS);
 
-        double stdB = ComplexMath.standardDeviation(complexList2);
+        double stdB = ComplexAdditions.standardDeviation(complexList2);
         Assert.assertEquals(1.2583057392117916, stdB, 1e-9);
-        Assert.assertEquals(Math.sqrt(ComplexMath.variance(complexList2)), stdB, EPS);
+        Assert.assertEquals(Math.sqrt(ComplexAdditions.variance(complexList2)), stdB, EPS);
     }
 
     @Test
     public void sumTest() {
-        Complex sumA = ComplexMath.sum(complexList1);
+        Complex sumA = ComplexAdditions.sum(complexList1);
         Assert.assertTrue(sumA.equals(new Complex(0, 1)));
 
-        Complex sumB = ComplexMath.sum(complexList2);
+        Complex sumB = ComplexAdditions.sum(complexList2);
         Assert.assertTrue(sumB.equals(new Complex(0, 1)));
     }
 
     @Test
     public void meanTest() {
-        Complex meanA = ComplexMath.mean(complexList1);
+        Complex meanA = ComplexAdditions.mean(complexList1);
         Assert.assertTrue(meanA.equals(new Complex(0, 0.25)));
 
-        Complex meanB = ComplexMath.mean(complexList1);
+        Complex meanB = ComplexAdditions.mean(complexList1);
         Assert.assertTrue(meanB.equals(new Complex(0, 0.25)));
     }
 
     @Test
     public void fftTest() {
-        List<Complex> fftList = ComplexMath.fft(complexList1);
+        List<Complex> fftList = ComplexAdditions.fft(complexList1);
         Assert.assertEquals(fftList.size(), complexList1.size());
         for (int i = 0; i < fftList.size(); i++) {
             Assert.assertEquals(fftList.get(i), fftResultList.get(i));
@@ -190,7 +190,7 @@ public class ComplexMathTest {
 
     @Test
     public void fftDoubleArrayTest() {
-        List<Complex> fftList = ComplexMath.fft(complexList1.toArray(new Complex[complexList1.size()]));
+        List<Complex> fftList = ComplexAdditions.fft(complexList1.toArray(new Complex[complexList1.size()]));
         Assert.assertEquals(fftList.size(), complexList1.size());
         for (int i = 0; i < fftList.size(); i++) {
             Assert.assertEquals(fftList.get(i), fftResultList.get(i));
@@ -199,7 +199,7 @@ public class ComplexMathTest {
 
     @Test
     public void fftDoubleTest() {
-        List<Complex> fftResult = ComplexMath.fft(doubleArray);
+        List<Complex> fftResult = ComplexAdditions.fft(doubleArray);
         Assert.assertEquals(fftResult.size(), doubleFftResult.size());
         for (int i = 0; i < fftResult.size(); i++) {
             Assert.assertTrue(Complex.equals(fftResult.get(i), doubleFftResult.get(i), EPS));
@@ -208,7 +208,7 @@ public class ComplexMathTest {
 
     @Test
     public void fftShiftTest() {
-        List<Complex> evenFftShiftList = ComplexMath.fftShift(complexList1);
+        List<Complex> evenFftShiftList = ComplexAdditions.fftShift(complexList1);
         Assert.assertEquals(evenFftShiftList.size(), complexList1.size());
         for (int i = 0; i < complexList1.size(); i++) {
             Assert.assertEquals(complexList1.get(i),
@@ -216,7 +216,7 @@ public class ComplexMathTest {
         }
 
         complexList1.add(NEGATIVE_ONE);
-        List<Complex> oddFftShiftList = ComplexMath.fftShift(complexList1);
+        List<Complex> oddFftShiftList = ComplexAdditions.fftShift(complexList1);
         Assert.assertEquals(oddFftShiftList.size(), complexList1.size());
         for (int i = 0; i < complexList1.size(); i++) {
             Assert.assertEquals(complexList1.get(i),
@@ -226,7 +226,7 @@ public class ComplexMathTest {
 
     @Test
     public void ifftTest() {
-        List<Complex> ifftList = ComplexMath.ifft(complexList1);
+        List<Complex> ifftList = ComplexAdditions.ifft(complexList1);
         Assert.assertEquals(ifftList.size(), complexList1.size());
         for (int i = 0; i < ifftList.size(); i++) {
             Assert.assertEquals(ifftList.get(i), ifftResultList.get(i));
@@ -235,7 +235,7 @@ public class ComplexMathTest {
 
     @Test
     public void ifftComplexArrayTest() {
-        List<Complex> ifftList = ComplexMath.ifft(complexList1.toArray(new Complex[complexList1.size()]));
+        List<Complex> ifftList = ComplexAdditions.ifft(complexList1.toArray(new Complex[complexList1.size()]));
         Assert.assertEquals(ifftList.size(), complexList1.size());
         for (int i = 0; i < ifftList.size(); i++) {
             Assert.assertEquals(ifftList.get(i), ifftResultList.get(i));
@@ -244,7 +244,7 @@ public class ComplexMathTest {
 
     @Test
     public void ifftDoubleTest() {
-        List<Complex> ifftResult = ComplexMath.ifft(doubleArray);
+        List<Complex> ifftResult = ComplexAdditions.ifft(doubleArray);
         Assert.assertEquals(ifftResult.size(), doubleIfftResult.size());
         for (int i = 0; i < ifftResult.size(); i++) {
             Assert.assertTrue(Complex.equals(ifftResult.get(i), doubleIfftResult.get(i), EPS));
@@ -253,7 +253,7 @@ public class ComplexMathTest {
 
     @Test
     public void ifftShiftTest() {
-        List<Complex> evenIfftShiftList = ComplexMath.ifftShift(complexList1);
+        List<Complex> evenIfftShiftList = ComplexAdditions.ifftShift(complexList1);
         Assert.assertEquals(evenIfftShiftList.size(), complexList1.size());
         for (int i = 0; i < complexList1.size(); i++) {
             Assert.assertEquals(complexList1.get(i),
@@ -261,7 +261,7 @@ public class ComplexMathTest {
         }
 
         complexList1.add(NEGATIVE_ONE);
-        List<Complex> oddfftShiftList = ComplexMath.ifftShift(complexList1);
+        List<Complex> oddfftShiftList = ComplexAdditions.ifftShift(complexList1);
         Assert.assertEquals(oddfftShiftList.size(), complexList1.size());
         for (int i = 0; i < complexList1.size(); i++) {
             Assert.assertEquals(complexList1.get(i),
@@ -271,7 +271,7 @@ public class ComplexMathTest {
 
     @Test
     public void normalizeBySizeOfListTest() {
-        List<Complex> normalizedBySizeOfListList = ComplexMath.normalizeBySizeOfList(complexList1);
+        List<Complex> normalizedBySizeOfListList = ComplexAdditions.normalizeBySizeOfList(complexList1);
         Assert.assertEquals(normalizedBySizeOfListList.size(), complexList1.size());
         for (int i = 0; i < normalizedBySizeOfListList.size(); i++) {
             Assert.assertEquals(normalizedBySizeOfListList.get(i), complexList1.get(i).divide(complexList1.size()));
@@ -280,7 +280,7 @@ public class ComplexMathTest {
 
     @Test
     public void scaleBySizeOfListTest() {
-        List<Complex> scaledBySizeOfListList = ComplexMath.scaleBySizeOfList(complexList1);
+        List<Complex> scaledBySizeOfListList = ComplexAdditions.scaleBySizeOfList(complexList1);
         for (int i = 0; i < scaledBySizeOfListList.size(); i++) {
             Assert.assertEquals(scaledBySizeOfListList.size(), complexList1.size());
             Assert.assertEquals(scaledBySizeOfListList.get(i), complexList1.get(i).multiply(complexList1.size()));

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.christianheina.math;
+package com.christianheina.common.math;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,9 +28,9 @@ import org.jtransforms.fft.DoubleFFT_1D;
  * 
  * @author Christian Heina (developer@christianheina.com)
  */
-public class ComplexMath {
+public class ComplexAdditions {
 
-    private ComplexMath() {
+    private ComplexAdditions() {
         /* Hidden Constructor */ }
 
     /**

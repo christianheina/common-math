@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.christianheina.math.exceptions;
+package com.christianheina.common.math.exceptions;
 
 /**
  * Base exception for IQ processor.
