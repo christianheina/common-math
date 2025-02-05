@@ -29,7 +29,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<commonsmath3.version>3.6.1</commonsmath3.version>
+		<commons-math3.version>3.6.1</commons-math3.version>
 		<jtransforms.version>3.1</jtransforms.version>
 		<testng.version>7.10.2</testng.version>
 		<formatter-maven-plugin.version>2.16.0</formatter-maven-plugin.version>
@@ -41,16 +41,18 @@
 	</properties>
 
 	<dependencies>
+		<!-- Compile dependencies -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>
-			<version>${commonsmath3.version}</version>
+			<version>${commons-math3.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.wendykierp</groupId>
 			<artifactId>JTransforms</artifactId>
 			<version>${jtransforms.version}</version>
 		</dependency>
+		<!-- Test dependencies -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
